@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BASE_URL } from "./baseUrl";
 
 const AddFoodItem = ({ setAddfood }) => {
   //v21 taken props from switching the state after Food is added
@@ -22,7 +23,7 @@ const AddFoodItem = ({ setAddfood }) => {
     let resto_id;
     const restaurantData = JSON.parse(localStorage.getItem("restaurantUser"));
     resto_id = restaurantData._id; //here we needed restaurant id so we took out the ID from local storage as to get to that page a Restaurant
-    let response = await fetch("http://localhost:3000/api/restaurant/foods", {
+    let response = await fetch(BASE_URL + "/api/restaurant/foods", {
       //should have details inside local storage
       method: "POST",
       body: JSON.stringify({

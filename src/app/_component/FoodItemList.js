@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { BASE_URL } from "./baseUrl";
 
 const FoodItemList = () => {
   const [foodItems, setFoodItems] = useState(); //for updating the Table
@@ -12,9 +13,7 @@ const FoodItemList = () => {
   const loadFoodItems = async () => {
     const restaurantData = JSON.parse(localStorage.getItem("restaurantUser"));
     const resto_id = restaurantData._id; //to make our params dynamic we took out restaurant id from Local storage
-    let response = await fetch(
-      `http://localhost:3000/api/restaurant/foods/${resto_id}`
-    );
+    let response = await fetch(`${BASE_URL}api/restaurant/foods/${resto_id}`);
     response = await response.json(); //data that has been fetched need to be converted in JSON format
     if (response.success) {
       console.log(response.result);
@@ -25,7 +24,7 @@ const FoodItemList = () => {
   };
   const deleteFoodItem = async (id) => {
     let response = await fetch(
-      "http://localhost:3000/api/restaurant/foods/" + id, //here we are sending id from as arguement
+      BASE_URL + "api/restaurant/foods/" + id, //here we are sending id from as arguement
       {
         method: "delete",
       }

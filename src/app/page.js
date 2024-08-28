@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import CustomerHeader from "./_component/CustomerHeader";
 import Footer from "./_component/Footer";
 import { useEffect, useState } from "react";
+import { BASE_URL } from "./_component/baseUrl";
 
 export default function Home() {
   const [locations, setLocations] = useState([]); //v29
@@ -20,7 +21,7 @@ export default function Home() {
 
   const loadLocations = async () => {
     //v29
-    let response = await fetch("http://localhost:3000/api/customer/locations");
+    let response = await fetch(BASE_URL + "api/customer/locations");
     response = await response.json();
     if (response.success) {
       setLocations(response.result);
@@ -30,7 +31,7 @@ export default function Home() {
   const loadRestaurants = async (params) => {
     //v32.1 taking params for filtering location and restaurants
     //fetching data from restaurants v31
-    let url = "http://localhost:3000/api/customer";
+    let url = BASE_URL + "/api/customer";
     if (params?.location) {
       //32.4 "?" as even if there is nothing it won't throw error
       url = url + "?location=" + params.location;

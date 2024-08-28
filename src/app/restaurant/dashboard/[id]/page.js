@@ -1,4 +1,5 @@
 "use client";
+import { BASE_URL } from "@/app/_component/baseUrl";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 // same skeleteon as ADD FOOD ITEM.JS v22
@@ -18,7 +19,7 @@ const EditFoodItems = (props) => {
 
   const handleLoadFoodItem = async () => {
     let response = await fetch(
-      "http://localhost:3000/api/restaurant/foods/edit/" + props.params.id
+      BASE_URL + "/api/restaurant/foods/edit/" + props.params.id
     );
     response = await response.json();
     if (response.success) {
@@ -41,7 +42,7 @@ const EditFoodItems = (props) => {
     }
 
     let response = await fetch(
-      "http://localhost:3000/api/restaurant/foods/edit/" + props.params.id, //created fucntion to send PUT request to api
+      BASE_URL + "api/restaurant/foods/edit/" + props.params.id, //created fucntion to send PUT request to api
       {
         method: "PUT",
         body: JSON.stringify({ name, price, img_path: path, description }),

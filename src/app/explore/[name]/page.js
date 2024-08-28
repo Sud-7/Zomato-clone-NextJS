@@ -1,4 +1,5 @@
 "use client";
+import { BASE_URL } from "@/app/_component/baseUrl";
 import CustomerHeader from "@/app/_component/CustomerHeader";
 import Footer from "@/app/_component/Footer";
 import { useEffect, useState } from "react";
@@ -21,7 +22,7 @@ const Page = (props) => {
     const id = props.searchParams.id; //v35.3 taking props from above
     // console.log(id)
 
-    let response = await fetch("http://localhost:3000/api/customer/" + id);
+    let response = await fetch(BASE_URL + "api/customer/" + id);
     response = await response.json();
     if (response.success) {
       setRestaurantDetails(response.details);
