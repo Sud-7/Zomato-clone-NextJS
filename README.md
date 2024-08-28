@@ -1,3 +1,10 @@
+v13
+creting collection and schema for food items
+
+v14
+creating API for Food items
+integrated with FE
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
